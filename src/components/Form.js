@@ -26,10 +26,10 @@ const Button = styled.input`
     }
 `;
 
-const Form = () => {
+const Form = ({saveCoin, saveCryptocurrency}) => {
 
     //state of list Cryptocurrency
-    const [ listCrypto, saveCryptocurrency ] =  useState([]);
+    const [ listCrypto, saveCryptocurrencys ] =  useState([]);
 
     //STATE Error - hook
     const [ error, saveError] = useState(false);
@@ -55,7 +55,7 @@ const Form = () => {
 
             const result = await axios.get(url);
 
-            saveCryptocurrency(result.data.Data)
+            saveCryptocurrencys(result.data.Data)
         }
         consultAPI();
     }, [])
@@ -73,6 +73,8 @@ const Form = () => {
 
         //pass the data to main component
         saveError(false);
+        saveCoin(coin);
+        saveCryptocurrency(cryptocurrency);
     }
 
     return ( 
