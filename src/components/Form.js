@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 
+import Error from './Error';
 import useCoin from '../hooks/useCoin';
 import useCryptocurrency from '../hooks/useCryptocurrency';
 import axios from 'axios';
@@ -78,7 +79,7 @@ const Form = () => {
         <form
             onSubmit={quoteCurrency}
         >
-            { error ? 'There is an error' : null }
+            { error ? <Error message="all the fields are required" /> : null }
 
             <SelectCoin />
 
