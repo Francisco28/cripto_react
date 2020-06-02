@@ -40,7 +40,7 @@ const Form = () => {
     //utility useCoin - custom hook
     const [ coin, SelectCoin ] = useCoin('Choose your coin', '', COINS);
 
-    //utility useCryptocurrency
+    //utility useCryptocurrency - hook
     const [ cryptocurrency, SelectCripto ] = useCryptocurrency('Choose your cryptocurrency', '',
          listCrypto);
 

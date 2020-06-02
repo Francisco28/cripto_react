@@ -26,7 +26,7 @@ const Selected = styled.select`
 
 const useCryptocurrency = (label, stateInitial, options) => {
 
-    console.log(options);
+    //console.log(options);
 
     //state of our custom hook
     const [ state, updateState ] = useState(stateInitial);
@@ -40,9 +40,9 @@ const useCryptocurrency = (label, stateInitial, options) => {
                 value={state}
             >
                 <option value="MXN">- Selected -</option>
-                { /*options.map(option => (
-                    <option key={option.code} value={option.code}>{option.name}</option>
-                ))*/ }
+                { options.map(option => ( //obtener los datos del array que retorna la API
+                    <option key={option.CoinInfo.Id} value={option.CoinInfo.Name}>{option.CoinInfo.FullName}</option>
+                )) }
             </Selected>
         </Fragment>
     );
