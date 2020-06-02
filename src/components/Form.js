@@ -24,8 +24,15 @@ const Button = styled.input`
 
 const Form = () => {
 
+    const COINS = [
+        { code: 'USD', name: 'Dollar of United States' },
+        { code: 'MXN', name: 'Peso Mexican' },
+        { code: 'EUR', name: 'Euro' },
+        { code: 'GBP', name: 'Libra Esterlina' }
+    ];
+
     //utility useCoin - custom hook
-    const [ coin, SelectCoin, updateState ] = useCoin();
+    const [ coin, SelectCoin ] = useCoin('Choose your coin', '', COINS);
 
     return ( 
         <form>
