@@ -30,6 +30,9 @@ const Form = () => {
     //state of list Cryptocurrency
     const [ listCrypto, saveCryptocurrency ] =  useState([]);
 
+    //STATE Error - hook
+    const [ error, saveError] = useState(false);
+
     const COINS = [
         { code: 'USD', name: 'Dollar of United States' },
         { code: 'MXN', name: 'Peso Mexican' },
@@ -56,9 +59,27 @@ const Form = () => {
         consultAPI();
     }, [])
 
+    //when the user press submit
+    const quoteCurrency = e => {
+        e.preventDefault();
+        
+
+        //validate if both fields are full
+        if(coin === '' || cryptocurrency === '') {
+            saveError(true);
+            return;
+        }
+
+        //pass the data to main component
+        saveError(false);
+    }
 
     return ( 
-        <form>
+        <form
+            onSubmit={quoteCurrency}
+        >
+            { error ? 'There is an error' : null }
+
             <SelectCoin />
 
             <SelectCripto />
