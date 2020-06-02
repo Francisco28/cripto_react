@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+import useCoin from '../hooks/useCoin';
 
 //styled component 
 const Button = styled.input`
@@ -22,9 +23,13 @@ const Button = styled.input`
 `;
 
 const Form = () => {
+
+    //utility useCoin - custom hook
+    const [ coin, SelectCoin, updateState ] = useCoin();
+
     return ( 
         <form>
-
+            <SelectCoin />
 
             <Button 
                 type="submit"
