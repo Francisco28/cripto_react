@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styled from '@emotion/styled';
 import image from './cryptomonedas.png';
 import Form from './components/Form';
+import Quotation from './components/Quotation';
 import axios from 'axios';
 
 const Container = styled.div`
@@ -42,6 +43,7 @@ function App() {
   //states
   const [ coin, saveCoin ] = useState('');
   const [ cryptocurrency, saveCryptocurrency ] = useState('');
+  const [ result, saveResult ] = useState({});
 
   useEffect( () => {
 
@@ -54,7 +56,7 @@ function App() {
 
         const result = await axios.get(url);
 
-        console.log(result.data.DISPLAY[cryptocurrency][coin]);
+        saveResult(result.data.DISPLAY[cryptocurrency][coin]);
     }
 
     quoteCryptocurrency();
@@ -77,6 +79,10 @@ function App() {
           <Form 
             saveCoin={saveCoin}
             saveCryptocurrency={saveCryptocurrency}
+          />
+
+          <Quotation 
+            result={result}
           />
       </div>
     </Container>
